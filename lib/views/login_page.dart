@@ -118,7 +118,55 @@ class _LoginPageState extends State<LoginPage> {
                                     ),
                                   ),
                                   TextButton(
-                                    onPressed: () async {},
+                                    onPressed: () async {
+                                      if (_emailController.text.isEmpty) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                         const SnackBar(
+                                            content: Text(
+                                              "Email cannot be empty",
+                                            ),
+                                          ),
+                                        );
+                                        return;
+                                      }
+                                      await AuthService()
+                                          .resetPassword(_emailController.text)
+                                          .then(
+                                        (value) {
+                                          if (value == "Mail Sent") {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content:const Text(
+                                                  "Check your e-mail inbox for password reset link.",
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                                backgroundColor:
+                                                    Colors.green.shade400,
+                                              ),
+                                            );
+                                            Navigator.pop(context);
+                                          } else {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                  value,
+                                                  style:const TextStyle(
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                                backgroundColor:
+                                                    Colors.red.shade400,
+                                              ),
+                                            );
+                                          }
+                                        },
+                                      );
+                                    },
                                     child: const Text(
                                       "Submit",
                                     ),
@@ -149,15 +197,19 @@ class _LoginPageState extends State<LoginPage> {
                         (value) {
                           if (value == "Login Successful") {
                             ScaffoldMessenger.of(context).showSnackBar(
-                             const SnackBar(
+                              const SnackBar(
                                 content: Text(
                                   "Login Successful",
                                 ),
                               ),
                             );
-                            Navigator.restorablePushNamedAndRemoveUntil(context, "/home", (route) => false,);
-                          }else{
-                             ScaffoldMessenger.of(context).showSnackBar(
+                            Navigator.restorablePushNamedAndRemoveUntil(
+                              context,
+                              "/home",
+                              (route) => false,
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
                                   value,
