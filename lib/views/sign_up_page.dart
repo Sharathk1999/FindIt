@@ -1,3 +1,4 @@
+import 'package:findit_admin_app/controllers/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -67,7 +68,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       child: TextFormField(
                         validator: (value) =>
                             value!.isEmpty ? "Name cannot be empty." : null,
-                        controller: _emailController,
+                        controller: _nameController,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           label: Text("Name"),
@@ -102,7 +103,38 @@ class _SignUpPageState extends State<SignUpPage> {
                 height: 60,
                 width: MediaQuery.of(context).size.width * .9,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                     //login logic
+                    if (formKey.currentState!.validate()) {
+                      AuthService()
+                          .createAccountWithEmail(
+                              _emailController.text, _passwordController.text)
+                          .then(
+                        (value) {
+                          if (value == "Account Created") {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                             const SnackBar(
+                                content: Text(
+                                  "Account Created Successful",
+                                ),
+                              ),
+                            );
+                            Navigator.restorablePushNamedAndRemoveUntil(context, "/home", (route) => false,);
+                          }else{
+                             ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  value,
+                                  style: const TextStyle(color: Colors.white),
+                                ),
+                                backgroundColor: Colors.red.shade400,
+                              ),
+                            );
+                          }
+                        },
+                      );
+                    }
+                  },
                   child: const Text(
                     "Sign up",
                     style: TextStyle(fontSize: 16),

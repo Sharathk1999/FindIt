@@ -1,5 +1,6 @@
 import 'package:findit_admin_app/containers/dashboard_text.dart';
 import 'package:findit_admin_app/containers/home_btn.dart';
+import 'package:findit_admin_app/controllers/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class AdminHome extends StatefulWidget {
@@ -15,18 +16,44 @@ class _AdminHomeState extends State<AdminHome> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Admin"),
-      ),
-      body: Column(
-        children: [
-          Container(
-            height: 240,
-            padding: EdgeInsets.all(12),
-            margin: EdgeInsets.only(left: 10, right: 10, bottom: 10,),
-            decoration: BoxDecoration(
-              color: Colors.grey.shade200,
-              borderRadius: BorderRadius.circular(10)
+        actions: [
+          IconButton(
+            onPressed: () {
+              AuthService().logOut();
+              ScaffoldMessenger.of(context).showSnackBar(
+                             const SnackBar(
+                                content: Text(
+                                  "Logout Successful",
+                                ),
+                              ),
+                            );
+              Navigator.pushNamedAndRemoveUntil(
+                context,
+                "/login",
+                (route) => false,
+              );
+            },
+            icon: const Icon(
+              Icons.logout_rounded,
             ),
-              child: Column(
+          ),
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: 240,
+              padding:const EdgeInsets.all(12),
+              margin:const EdgeInsets.only(
+                left: 10,
+                right: 10,
+                bottom: 10,
+              ),
+              decoration: BoxDecoration(
+                  color: Colors.blueGrey.withAlpha(40),
+                  borderRadius: BorderRadius.circular(10)),
+              child:const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -36,26 +63,46 @@ class _AdminHomeState extends State<AdminHome> {
                   DashboardText(keyword: "Total Products", value: "120"),
                   DashboardText(keyword: "Total Products", value: "120"),
                 ],
-              ),),
-              Row(
-                children: [
-                  HomeBtn(onTap: (){}, name: "Orders",),
-              HomeBtn(onTap: (){}, name: "Products",),
-                ],
               ),
-              Row(
-                children: [
-                  HomeBtn(onTap: (){}, name: "Promos",),
-              HomeBtn(onTap: (){}, name: "Banners",),
-                ],
-              ),
-              Row(
-                children: [
-                  HomeBtn(onTap: (){}, name: "Categories",),
-              HomeBtn(onTap: (){}, name: "Coupons",),
-                ],
-              ),
-        ],
+            ),
+            Row(
+              children: [
+                HomeBtn(
+                  onTap: () {},
+                  name: "Orders",
+                ),
+                HomeBtn(
+                  onTap: () {},
+                  name: "Products",
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                HomeBtn(
+                  onTap: () {},
+                  name: "Promos",
+                ),
+                HomeBtn(
+                  onTap: () {},
+                  name: "Banners",
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                HomeBtn(
+                  onTap: () {},
+                  name: "Categories",
+                ),
+                HomeBtn(
+                  onTap: () {},
+                  name: "Coupons",
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
