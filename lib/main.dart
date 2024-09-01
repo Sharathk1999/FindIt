@@ -1,10 +1,13 @@
 import 'package:findit_admin_app/controllers/auth_service.dart';
 import 'package:findit_admin_app/firebase_options.dart';
+import 'package:findit_admin_app/providers/admin_provider.dart';
 import 'package:findit_admin_app/views/admin_home.dart';
+import 'package:findit_admin_app/views/category_page.dart';
 import 'package:findit_admin_app/views/login_page.dart';
 import 'package:findit_admin_app/views/sign_up_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,19 +22,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueGrey),
-        useMaterial3: true,
+    return ChangeNotifierProvider(
+      create: (context) => AdminProvider(),
+      builder: (context, child) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'FindIt Admin App',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueGrey),
+          useMaterial3: true,
+        ),
+        routes: {
+          "/": (context) => const CheckUserLoggedIn(),
+          "/home": (context) => const AdminHome(),
+          "/login": (context) => const LoginPage(),
+          "/signUp": (context) => const SignUpPage(),
+          "/category": (context) => const CategoryPage(),
+        },
       ),
-      routes: {
-        "/": (context) => const CheckUserLoggedIn(),
-        "/home": (context) => const AdminHome(),
-        "/login": (context) => const LoginPage(),
-        "/signUp": (context) => const SignUpPage(),
-      },
     );
   }
 }

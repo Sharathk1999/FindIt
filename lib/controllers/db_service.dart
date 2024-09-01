@@ -11,7 +11,7 @@ class DbService {
 
 //read category from db
 Stream<QuerySnapshot> readCategories(){
-  return db.collection("shop_categories")
+  return db.collection("shop_categories").orderBy("priority", descending: true)
   .snapshots();
 }
 
@@ -22,7 +22,15 @@ Future createCategory({required Map<String, dynamic> data})async{
 
 //update category
 Future updateCategory({required String docId, required Map<String, dynamic> data})async{
-  await db.collection("shop_categories").doc(docId).update(data);
+  try {
+    if (docId.isEmpty) {
+    throw ArgumentError('Document ID cannot be empty');
+  }
+
+    await db.collection("shop_categories").doc(docId).update(data);
+  } catch (e) {
+    print("🖥️🖥️🖥️Error updating the Category: ${e.toString()}");
+  }
 }
 
 //delete category
