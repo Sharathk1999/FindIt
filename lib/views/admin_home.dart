@@ -72,7 +72,9 @@ class _AdminHomeState extends State<AdminHome> {
                   name: "Orders",
                 ),
                 HomeBtn(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, "/product");
+                  },
                   name: "Products",
                 ),
               ],

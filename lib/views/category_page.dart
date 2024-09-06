@@ -41,6 +41,7 @@ class _CategoryPageState extends State<CategoryPage> {
                   height: 50,
                   width: 50,
                   child: Image.network(
+                    // ignore: unnecessary_null_comparison
                     categories[index].image == null ||
                             categories[index].image == ""
                         ? "https://icrier.org/wp-content/uploads/2022/09/Event-Image-Not-Found.jpg"

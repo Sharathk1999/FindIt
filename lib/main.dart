@@ -4,7 +4,10 @@ import 'package:findit_admin_app/providers/admin_provider.dart';
 import 'package:findit_admin_app/views/admin_home.dart';
 import 'package:findit_admin_app/views/category_page.dart';
 import 'package:findit_admin_app/views/login_page.dart';
+import 'package:findit_admin_app/views/modify_product_page.dart';
+import 'package:findit_admin_app/views/products_page.dart';
 import 'package:findit_admin_app/views/sign_up_page.dart';
+import 'package:findit_admin_app/views/view_product.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -37,6 +40,11 @@ class MyApp extends StatelessWidget {
           "/login": (context) => const LoginPage(),
           "/signUp": (context) => const SignUpPage(),
           "/category": (context) => const CategoryPage(),
+          "/product": (context) => const ProductsPage(),
+          "/add_product": (context) => const ModifyProductPage(),
+          "/view_product": (context) => const ViewProduct(),
+          
+
         },
       ),
     );
