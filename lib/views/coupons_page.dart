@@ -22,6 +22,7 @@ class _CouponsPageState extends State<CouponsPage> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             List<CouponModel> coupons =
+                // ignore: unnecessary_cast
                 CouponModel.fromJsonList(snapshot.data!.docs)
                     as List<CouponModel>;
             if (coupons.isEmpty) {
@@ -117,7 +118,7 @@ class _CouponsPageState extends State<CouponsPage> {
         onPressed: () {
           showDialog(
             context: context,
-            builder: (context) => ModifyCoupon(
+            builder: (context) =>const ModifyCoupon(
               id: "",
               code: "",
               description: "",
