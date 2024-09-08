@@ -5,7 +5,9 @@ import 'package:findit_admin_app/views/admin_home.dart';
 import 'package:findit_admin_app/views/category_page.dart';
 import 'package:findit_admin_app/views/login_page.dart';
 import 'package:findit_admin_app/views/modify_product_page.dart';
+import 'package:findit_admin_app/views/modify_promo.dart';
 import 'package:findit_admin_app/views/products_page.dart';
+import 'package:findit_admin_app/views/promo_banners_page.dart';
 import 'package:findit_admin_app/views/sign_up_page.dart';
 import 'package:findit_admin_app/views/view_product.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -43,6 +45,9 @@ class MyApp extends StatelessWidget {
           "/product": (context) => const ProductsPage(),
           "/add_product": (context) => const ModifyProductPage(),
           "/view_product": (context) => const ViewProduct(),
+          "/promos": (context) => const PromoBannersPage(),
+          "/update_promo": (context) => const ModifyPromo(),
+          
           
 
         },

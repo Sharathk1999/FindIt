@@ -21,12 +21,12 @@ class _AdminHomeState extends State<AdminHome> {
             onPressed: () {
               AuthService().logOut();
               ScaffoldMessenger.of(context).showSnackBar(
-                             const SnackBar(
-                                content: Text(
-                                  "Logout Successful",
-                                ),
-                              ),
-                            );
+                const SnackBar(
+                  content: Text(
+                    "Logout Successful",
+                  ),
+                ),
+              );
               Navigator.pushNamedAndRemoveUntil(
                 context,
                 "/login",
@@ -44,8 +44,8 @@ class _AdminHomeState extends State<AdminHome> {
           children: [
             Container(
               height: 240,
-              padding:const EdgeInsets.all(12),
-              margin:const EdgeInsets.only(
+              padding: const EdgeInsets.all(12),
+              margin: const EdgeInsets.only(
                 left: 10,
                 right: 10,
                 bottom: 10,
@@ -53,15 +53,15 @@ class _AdminHomeState extends State<AdminHome> {
               decoration: BoxDecoration(
                   color: Colors.blueGrey.withAlpha(40),
                   borderRadius: BorderRadius.circular(10)),
-              child:const Column(
+              child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   DashboardText(keyword: "Total Orders", value: "120"),
                   DashboardText(keyword: "Total Products", value: "120"),
-                  DashboardText(keyword: "Total Products", value: "120"),
-                  DashboardText(keyword: "Total Products", value: "120"),
-                  DashboardText(keyword: "Total Products", value: "120"),
+                  DashboardText(keyword: "Total Categories", value: "120"),
+                  DashboardText(keyword: "Total Promos", value: "120"),
+                  DashboardText(keyword: "Total banners", value: "120"),
                 ],
               ),
             ),
@@ -82,11 +82,17 @@ class _AdminHomeState extends State<AdminHome> {
             Row(
               children: [
                 HomeBtn(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, "/promos",
+                        arguments: {"promo": true});
+                  },
                   name: "Promos",
                 ),
                 HomeBtn(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, "/promos",
+                        arguments: {"promo": false});
+                  },
                   name: "Banners",
                 ),
               ],
