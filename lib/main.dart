@@ -3,6 +3,7 @@ import 'package:findit_admin_app/firebase_options.dart';
 import 'package:findit_admin_app/providers/admin_provider.dart';
 import 'package:findit_admin_app/views/admin_home.dart';
 import 'package:findit_admin_app/views/category_page.dart';
+import 'package:findit_admin_app/views/coupons_page.dart';
 import 'package:findit_admin_app/views/login_page.dart';
 import 'package:findit_admin_app/views/modify_product_page.dart';
 import 'package:findit_admin_app/views/modify_promo.dart';
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
           "/view_product": (context) => const ViewProduct(),
           "/promos": (context) => const PromoBannersPage(),
           "/update_promo": (context) => const ModifyPromo(),
+          "/coupons": (context) => const CouponsPage(),
           
           
 

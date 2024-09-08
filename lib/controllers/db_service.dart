@@ -126,7 +126,6 @@ class DbService {
     Future updateCouponsCode({
     required String id,
     required Map<String, dynamic> data,
-   
   }) async {
     await db
         .collection("shop_coupons")
