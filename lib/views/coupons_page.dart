@@ -172,8 +172,8 @@ class _ModifyCouponState extends State<ModifyCoupon> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text("All will be converted to Uppercase"),
-            SizedBox(
+            const Text("All will be converted to Uppercase"),
+            const SizedBox(
               height: 10,
             ),
             TextFormField(
@@ -191,7 +191,7 @@ class _ModifyCouponState extends State<ModifyCoupon> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextFormField(
@@ -209,7 +209,7 @@ class _ModifyCouponState extends State<ModifyCoupon> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             TextFormField(
@@ -236,7 +236,7 @@ class _ModifyCouponState extends State<ModifyCoupon> {
           onPressed: () {
             Navigator.pop(context);
           },
-          child: Text(
+          child: const Text(
             "Cancel",
           ),
         ),

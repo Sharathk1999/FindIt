@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:io';
 
 import 'package:findit_admin_app/containers/confirm_widget.dart';
@@ -37,7 +39,7 @@ class _CategoryPageState extends State<CategoryPage> {
             itemCount: value.categories.length,
             itemBuilder: (context, index) {
               return ListTile(
-                leading: Container(
+                leading: SizedBox(
                   height: 50,
                   width: 50,
                   child: Image.network(
@@ -198,7 +200,7 @@ class _ModifyCategoryState extends State<ModifyCategory> {
       setState(() {
         if (res != null) {
           imageController.text = res;
-          print("Set image url ${res} : ${imageController.text}");
+          debugPrint("Set image url $res : ${imageController.text}");
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text(

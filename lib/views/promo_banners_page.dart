@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_cast
+
 import 'package:findit_admin_app/containers/confirm_widget.dart';
 import 'package:findit_admin_app/controllers/db_service.dart';
 import 'package:findit_admin_app/models/promo_banners_model.dart';
@@ -24,7 +26,7 @@ class _PromoBannersPageState extends State<PromoBannersPage> {
           if (arguments != null && arguments is Map<String, dynamic>) {
             _isPromo = arguments["promo"] ?? true;
           }
-          print("promo $_isPromo");
+          debugPrint("promo $_isPromo");
           _isInitialized = true;
           setState(() {});
         }
@@ -104,7 +106,7 @@ class _PromoBannersPageState extends State<PromoBannersPage> {
                     },
                   );
                         },
-                        leading: Container(
+                        leading: SizedBox(
                           height: 50,
                           width: 50,
                           child: Image.network(promos[index].image),

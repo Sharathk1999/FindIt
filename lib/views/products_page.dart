@@ -86,7 +86,7 @@ class _ProductsPageState extends State<ProductsPage> {
                     },
                   );
                 },
-                leading: Container(
+                leading: SizedBox(
                   height: 50,
                   width: 50,
                   child: Image.network(

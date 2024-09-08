@@ -15,7 +15,7 @@ class StorageServices {
         ),
       ),
     );
-    print("Image Uploading....");
+    debugPrint("Image Uploading....");
     File file = File(path);
 
     try {
@@ -33,11 +33,11 @@ class StorageServices {
 
       //get image download url
       String downloadUrl =  await ref.getDownloadURL();
-      print("Download URL: $downloadUrl");
+      debugPrint("Download URL: $downloadUrl");
       return downloadUrl;
 
     } catch (e) {
-     print("Error from StorageService: $e");
+     debugPrint("Error from StorageService: $e");
      return null; 
     }
   }

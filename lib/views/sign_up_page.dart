@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:findit_admin_app/controllers/auth_service.dart';
 import 'package:flutter/material.dart';
 
