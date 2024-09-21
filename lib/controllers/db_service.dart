@@ -144,5 +144,22 @@ class DbService {
         .delete();
   }
 
+  //Orders
+  //Read all the orders
+   //Read order data for specific product
+  Stream<QuerySnapshot> readOrders() {
+    return db
+        .collection("shop_orders")
+        .orderBy("created_at", descending: true)
+        .snapshots();
+  }
+
+   //Update order status
+  Future updateOrderStatus(
+      {required String docId, required Map<String, dynamic> data}) async {
+    await db.collection("shop_orders").doc(docId).update(data);
+  }
+
+
 
 }

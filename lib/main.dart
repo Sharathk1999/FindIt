@@ -9,6 +9,7 @@ import 'package:findit_admin_app/views/coupons_page.dart';
 import 'package:findit_admin_app/views/login_page.dart';
 import 'package:findit_admin_app/views/modify_product_page.dart';
 import 'package:findit_admin_app/views/modify_promo.dart';
+import 'package:findit_admin_app/views/orders_page.dart';
 import 'package:findit_admin_app/views/products_page.dart';
 import 'package:findit_admin_app/views/promo_banners_page.dart';
 import 'package:findit_admin_app/views/sign_up_page.dart';
@@ -51,9 +52,8 @@ class MyApp extends StatelessWidget {
           "/promos": (context) => const PromoBannersPage(),
           "/update_promo": (context) => const ModifyPromo(),
           "/coupons": (context) => const CouponsPage(),
-          
-          
-
+          "/orders": (context) => const OrdersPage(),
+          "/view_orders": (context) => const ViewOrders(),
         },
       ),
     );
